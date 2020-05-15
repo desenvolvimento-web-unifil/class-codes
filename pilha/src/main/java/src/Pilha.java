@@ -22,40 +22,12 @@ public class Pilha {
         if (this.topo == null) {
             this.topo = _node;
         } else {
-            _node.setProximo(this.topo)
+            _node.setProximo(this.topo);
             this.topo = _node;
         }
         tamanho++;
     }
-
-    /**
-     * Metodo que retorna o valor armazenado em determinada posicao
-     * 
-     * @param _posicao posicao
-     * @return retorna o valor se existir, caso contrario, retorna -99.
-     */
-    // [0,1,2,3,4,5] - 4 > 3
-    // ->
-    // <- 6-4 = 2
-    // -2
-    // [0,1,2,3,4,5]
-    // <-
-    public int get(int _posicao) {
-        if (_posicao > this.tamanho) {
-            return -99;
-        }
-        if (_posicao == 0) {
-            return this.inicio.getValor();
-        } else {
-            Node aux = this.inicio;
-            while (aux.getProximo() != null & _posicao > 0) {
-                aux = aux.getProximo();
-                _posicao--;
-            }
-            return aux.getValor();
-        }
-    }
-
+    
     /**
      * Metodo para remover um valor dentro da pilha
      * 
@@ -66,11 +38,13 @@ public class Pilha {
      * [ ]
      *     
      */
-    public void desempilhar() {
-        if (this.topo == null) return;
+    public int desempilhar() {
+        if (this.topo == null) return -1;
 
+        Node aux = this.topo;
         this.topo = this.topo.getProximo();        
         this.tamanho--;
+        return aux.getValor();
     }
 
     public int getTamanho() {
@@ -81,7 +55,7 @@ public class Pilha {
     public String toString() {
         StringBuilder str = new StringBuilder();
         str.append("[");
-        Node aux = this.inicio;
+        Node aux = this.topo;
         while (aux.getProximo() != null) {
             str.append(aux.getValor() + " ");
             aux = aux.getProximo();

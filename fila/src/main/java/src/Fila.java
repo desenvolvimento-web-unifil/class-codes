@@ -19,7 +19,6 @@ public class Fila {
         } else {
             //[]->[]->[]->[]<->[u|n]
             this.ultimo.setProximo(_node);
-            _node.setAnterior(this.ultimo);
             this.ultimo = _node;          
         }
         tamanho++;
@@ -61,8 +60,7 @@ public class Fila {
     public void desenfileirar() {
         if(this.inicio == null) return;
 
-        this.inicio = this.inicio.getProximo();
-        this.inicio.setAnterior(null);
+        this.inicio = this.inicio.getProximo();        
                 
         this.tamanho--;
     }

@@ -3,7 +3,7 @@ package src;
 public class Node {
 
     private int valor;
-    private Node proximo;    
+    private Node proximo;
 
     Node(int _valor) {
         this.valor = _valor;
